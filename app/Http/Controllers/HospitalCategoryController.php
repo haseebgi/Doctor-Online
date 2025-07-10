@@ -25,7 +25,7 @@ class HospitalCategoryController extends Controller
         ]);
 
         HospitalCategory::create($request->only('title'));
-        return redirect()->route('hospital_categories.index')->with('success', 'Category created');
+        return redirect()->route('hospital_categories.create')->with('success', 'Category created');
     }
 
     public function edit($id)

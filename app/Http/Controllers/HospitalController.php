@@ -8,9 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class HospitalController extends Controller
 {
-    public function index()
+public function index()
     {
-        // Show all hospitals in a blade view
         $hospitals = Hospital::all();
         return view('hospitals.index', compact('hospitals'));
     }
@@ -24,7 +23,7 @@ class HospitalController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'icon' => 'nullable|image|mimes:jpg,jpeg,png,gif',
+            'icon' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'title' => 'nullable|string',
             'description' => 'nullable|string',
             'phone_no' => 'nullable|string',
@@ -35,12 +34,11 @@ class HospitalController extends Controller
         ]);
 
         if ($request->hasFile('icon')) {
-            $path = $request->file('icon')->store('hospital_icons', 'public');
-            $validated['icon'] = $path;
+            $validated['icon'] = $request->file('icon')->store('hospital_icons', 'public');
         }
 
         Hospital::create($validated);
-        return redirect()->route('hospitals.index')->with('success', 'Hospital created successfully.');
+        return redirect()->route('hospitals.create')->with('success', 'Hospital created successfully.');
     }
 
     public function edit($id)
@@ -76,7 +74,7 @@ class HospitalController extends Controller
         }
 
         $hospital->update($validated);
-        return redirect()->route('hospitals.index')->with('success', 'Hospital updated successfully.');
+       return redirect()->route('hospitals.index')->with('success', 'Hospital updated successfully.');
     }
 
     public function destroy($id)

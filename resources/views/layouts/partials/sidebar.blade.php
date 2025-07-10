@@ -14,27 +14,43 @@
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="{{url('Category')}}" data-bs-toggle="collapse" data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Products
+                                Hospitals
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{('products/create')}}">Static Add Products</a>
-                                    <a class="nav-link" href="{{url('products')}}">View Products</a>
+                                  <a class="nav-link" href="{{ route('hospitals.create') }}">Create Hospital</a>
+                                   <a class="nav-link" href="{{ route('hospitals.index') }}">View Hospital</a>
+
                                 </nav>
                             </div>
 
-                                 <a class="nav-link collapsed" href="{{url('Category')}}" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseHospitalCategory" aria-expanded="false" aria-controls="collapseHospitalCategory">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Posts
+                                Hospital's Category
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePosts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseHospitalCategory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{('post/create')}}">Static Add Post</a>
-                                    <a class="nav-link" href="{{url('Post')}}">View Post</a>
+                                    <a class="nav-link" href="{{ route('hospital_categories.create') }}">Create Category</a>
+                                    <a class="nav-link" href="{{ route('hospital_categories.index') }}">View Category</a>
                                 </nav>
                             </div>
+
+
+                       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProperties" aria-expanded="false" aria-controls="collapseProperties">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Properties
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseProperties" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('properties.create') }}">Create Property</a>
+                                <a class="nav-link" href="{{ route('properties.index') }}">View Properties</a>
+                            </nav>
+                        </div>
+
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             

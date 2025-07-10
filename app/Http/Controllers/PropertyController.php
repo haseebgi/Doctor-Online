@@ -26,7 +26,7 @@ class PropertyController extends Controller
         ]);
 
         Property::create($validated);
-        return redirect()->route('properties.index')->with('success', 'Property created.');
+        return redirect()->route('properties.create')->with('success', 'Property created.');
     }
 
     public function edit($id)

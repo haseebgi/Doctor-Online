@@ -6,6 +6,10 @@ use App\Http\Controllers\HospitalCategoryController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PropertyController;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -48,4 +52,5 @@ Route::get('/properties/create', [PropertyController::class, 'create'])->name('p
 Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 Route::get('/properties/{id}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
 Route::put('/properties/{id}', [PropertyController::class, 'update'])->name('properties.update');
-Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name('properties.destroy');
+Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name('properties.destroy'); 
+
