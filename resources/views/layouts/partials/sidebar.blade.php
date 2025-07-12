@@ -51,6 +51,86 @@
                         </div>
 
 
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSurgeries" aria-expanded="false" aria-controls="collapseSurgeries">
+                            <div class="sb-nav-link-icon"><i class="fas fa-syringe"></i></div>
+                            Surgeries
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseSurgeries" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('surgeries.create') }}">Create Surgery</a>
+                                <a class="nav-link" href="{{ route('surgeries.index') }}">View Surgeries</a>
+                            </nav>
+                        </div>
+
+
+
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseShop" aria-expanded="false" aria-controls="collapseShop">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            Shop
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseShop" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('shops.create') }}">Create Product</a>
+                                <a class="nav-link" href="{{ route('shops.index') }}">View Products</a>
+                            </nav>
+                        </div>
+
+
+
+
+                            <!-- Doctor Menu -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-md"></i></div>
+                        Doctor
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDoctor" aria-labelledby="headingDoctor" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{ route('doctors.create') }}">Create Doctor</a>
+                            <a class="nav-link" href="{{ route('doctors.index') }}">View Doctors</a>
+                        </nav>
+                    </div>
+
+
+
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDisease" aria-expanded="false" aria-controls="collapseDisease">
+                            <div class="sb-nav-link-icon"><i class="fas fa-virus"></i></div>
+                            Disease
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseDisease" aria-labelledby="headingDisease" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('diseases.create') }}">Create Disease</a>
+                                <a class="nav-link" href="{{ route('diseases.index') }}">View Diseases</a>
+                            </nav>
+                        </div>
+
+
+
+
+
+                                    <!-- Category Menu (use unique ID) -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                Category
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCategory" aria-labelledby="headingCategory" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="login.html">Create Category</a>
+                                    <a class="nav-link" href="register.html">View Category</a>
+                                </nav>
+                            </div>
+
+
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             

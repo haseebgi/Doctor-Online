@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +15,10 @@ class Hospital extends Model
         'title',
         'description',
         'phone_no',
-        'map_direction',
         'address',
+        'location',
+        'latitude',
+        'longitude',
         'hospital_category_id',
         'property_id',
     ];

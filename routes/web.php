@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HospitalCategoryController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\SurgeryController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DiseaseController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -27,16 +31,14 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/hospitals', [HospitalController::class, 'index'])->name('hospitals.index');
-Route::get('/hospitals/create', [HospitalController::class, 'create'])->name('hospitals.create');
-Route::post('/hospitals', [HospitalController::class, 'store'])->name('hospitals.store');
-Route::get('/hospitals/{id}/edit', [HospitalController::class, 'edit'])->name('hospitals.edit');
-Route::put('/hospitals/{id}', [HospitalController::class, 'update'])->name('hospitals.update');
-Route::delete('/hospitals/{id}', [HospitalController::class, 'destroy'])->name('hospitals.destroy');
+
 
 //hospital-category
 
 
+Route::resource('hospitals', HospitalController::class);
+
+// ✅ Manually register routes for hospital categories (because you're not using resource here)
 Route::get('/hospital-categories', [HospitalCategoryController::class, 'index'])->name('hospital_categories.index');
 Route::get('/hospital-categories/create', [HospitalCategoryController::class, 'create'])->name('hospital_categories.create');
 Route::post('/hospital-categories', [HospitalCategoryController::class, 'store'])->name('hospital_categories.store');
@@ -54,3 +56,18 @@ Route::get('/properties/{id}/edit', [PropertyController::class, 'edit'])->name('
 Route::put('/properties/{id}', [PropertyController::class, 'update'])->name('properties.update');
 Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name('properties.destroy'); 
 
+//surgeries
+
+Route::resource('surgeries', SurgeryController::class);
+
+//shop
+
+Route::resource('shops', ShopController::class);
+
+//doctors
+
+Route::resource('doctors', DoctorController::class);
+
+//
+
+Route::resource('diseases', DiseaseController::class);

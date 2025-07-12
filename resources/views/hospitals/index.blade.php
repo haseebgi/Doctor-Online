@@ -1,18 +1,9 @@
-
 @extends('layouts.admin')
+
 @section('content')
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Hospitals</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
-
-    <h2 class="mb-4">All Hospitals</h2>
-    <a href="{{ route('hospitals.create') }}" class="btn btn-primary mb-3">Create New Hospital</a>
+<div class="container mt-4">
+    <h2>All Hospitals</h2>
+    <a href="{{ route('hospitals.create') }}" class="btn btn-primary mb-3">Add Hospital</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -23,42 +14,42 @@
             <tr>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Phone</th>
                 <th>Title</th>
-                <th>Description</th>
+                <th>Phone</th>
                 <th>Address</th>
+                <th>Location</th>
+                <th>Map</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($hospitals as $hospital)
-                <tr>
-                 <td>
-    @if ($hospital->icon && file_exists(public_path('storage/' . $hospital->icon)))
-        <img src="{{ asset('storage/' . $hospital->icon) }}" alt="Hospital Icon" width="80">
-    @else
-        <img src="{{ asset('images/default.png') }}" alt="Default Icon" width="80">
-    @endif
-</td>
-
-                    <td>{{ $hospital->name }}</td>
-                    <td>{{ $hospital->phone_no }}</td>
-                    <td>{{ $hospital->title }}</td>
-                    <td>{{ $hospital->description }}</td>
-                    <td>{{ $hospital->address }}</td>
-                    <td>
-                        <a href="{{ route('hospitals.edit', $hospital->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('hospitals.destroy', $hospital->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+            @foreach($hospitals as $hospital)
+            <tr>
+                <td><img src="{{ $hospital->icon ? asset('storage/' . $hospital->icon) : asset('images/default.png') }}" width="60"></td>
+                <td>{{ $hospital->name }}</td>
+                <td>{{ $hospital->title }}</td>
+                <td>{{ $hospital->phone_no }}</td>
+                <td>{{ $hospital->address }}</td>
+                <td>{{ $hospital->location }}</td>
+                <td>
+                    @if($hospital->latitude && $hospital->longitude)
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ $hospital->latitude }},{{ $hospital->longitude }}"
+                           class="btn btn-info btn-sm" target="_blank">Map</a>
+                    @else
+                        <span class="text-muted">No Map</span>
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('hospitals.edit', $hospital->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('hospitals.destroy', $hospital->id) }}" method="POST" style="display:inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-
-</body>
-</html>
+</div>
 @endsection

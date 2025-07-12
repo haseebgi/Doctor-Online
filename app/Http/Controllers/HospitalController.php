@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Hospital;
+use App\Models\HospitalCategory;
+use App\Models\Property;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class HospitalController extends Controller
 {
-public function index()
+    public function index()
     {
         $hospitals = Hospital::all();
         return view('hospitals.index', compact('hospitals'));
@@ -16,7 +18,9 @@ public function index()
 
     public function create()
     {
-        return view('hospitals.create');
+        $categories = HospitalCategory::all();
+        $properties = Property::all();
+        return view('hospitals.create', compact('categories', 'properties'));
     }
 
     public function store(Request $request)
@@ -27,8 +31,10 @@ public function index()
             'title' => 'nullable|string',
             'description' => 'nullable|string',
             'phone_no' => 'nullable|string',
-            'map_direction' => 'nullable|string',
             'address' => 'nullable|string',
+            'location' => 'nullable|string',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
             'hospital_category_id' => 'required|integer',
             'property_id' => 'required|integer',
         ]);
@@ -38,50 +44,45 @@ public function index()
         }
 
         Hospital::create($validated);
-        return redirect()->route('hospitals.create')->with('success', 'Hospital created successfully.');
+        return redirect()->route('hospitals.index')->with('success', 'Hospital created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Hospital $hospital)
     {
-        $hospital = Hospital::findOrFail($id);
-        return view('hospitals.edit', compact('hospital'));
+        $categories = HospitalCategory::all();
+        $properties = Property::all();
+        return view('hospitals.edit', compact('hospital', 'categories', 'properties'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Hospital $hospital)
     {
-        $hospital = Hospital::findOrFail($id);
-
         $validated = $request->validate([
-            'name' => 'sometimes|string|max:255',
-            'icon' => 'nullable|image|mimes:jpg,jpeg,png,gif',
+            'name' => 'required|string|max:255',
+            'icon' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'title' => 'nullable|string',
             'description' => 'nullable|string',
             'phone_no' => 'nullable|string',
-            'map_direction' => 'nullable|string',
             'address' => 'nullable|string',
-            'hospital_category_id' => 'nullable|integer',
-            'property_id' => 'nullable|integer',
+            'location' => 'nullable|string',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'hospital_category_id' => 'required|integer',
+            'property_id' => 'required|integer',
         ]);
 
         if ($request->hasFile('icon')) {
-            // Optional: delete old image
             if ($hospital->icon && Storage::disk('public')->exists($hospital->icon)) {
                 Storage::disk('public')->delete($hospital->icon);
             }
-
-            $path = $request->file('icon')->store('hospital_icons', 'public');
-            $validated['icon'] = $path;
+            $validated['icon'] = $request->file('icon')->store('hospital_icons', 'public');
         }
 
         $hospital->update($validated);
-       return redirect()->route('hospitals.index')->with('success', 'Hospital updated successfully.');
+        return redirect()->route('hospitals.index')->with('success', 'Hospital updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Hospital $hospital)
     {
-        $hospital = Hospital::findOrFail($id);
-
-        // Optional: delete image
         if ($hospital->icon && Storage::disk('public')->exists($hospital->icon)) {
             Storage::disk('public')->delete($hospital->icon);
         }

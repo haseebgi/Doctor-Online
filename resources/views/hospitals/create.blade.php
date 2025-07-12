@@ -25,6 +25,7 @@
     {{-- Hospital Form --}}
     <form action="{{ route('hospitals.store') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm">
         @csrf
+
         <div class="mb-3">
             <label class="form-label">Hospital Name</label>
             <input type="text" name="name" class="form-control" required>
@@ -51,13 +52,23 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Map Direction Link</label>
-            <input type="text" name="map_direction" class="form-control">
+            <label class="form-label">Address</label>
+            <input type="text" name="address" class="form-control">
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Address</label>
-            <input type="text" name="address" class="form-control">
+            <label class="form-label">Location</label>
+            <input type="text" name="location" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Latitude</label>
+            <input type="text" name="latitude" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Longitude</label>
+            <input type="text" name="longitude" class="form-control">
         </div>
 
         <div class="mb-3">
