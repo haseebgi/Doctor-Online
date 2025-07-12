@@ -9,6 +9,8 @@ use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DiseaseController;
+use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\OrderController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -55,6 +57,27 @@ Route::post('/properties', [PropertyController::class, 'store'])->name('properti
 Route::get('/properties/{id}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
 Route::put('/properties/{id}', [PropertyController::class, 'update'])->name('properties.update');
 Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name('properties.destroy'); 
+
+
+
+//medicine route
+Route::get('/medicines', [MedicineController::class, 'index'])->name('medicines.index');
+Route::get('/medicines/create', [MedicineController::class, 'create'])->name('medicines.create');
+Route::post('/medicines', [MedicineController::class, 'store'])->name('medicines.store');
+Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('medicines.show');
+Route::resource('medicines', MedicineController::class);
+//order route
+Route::get('/order', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::get('/admin/order', [OrderController::class, 'adminIndex'])->name('order.admin.index');
+Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
+Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+Route::put('/order/{id}/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
+
+
+
+
 
 //surgeries
 
