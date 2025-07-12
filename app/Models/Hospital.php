@@ -23,3 +23,4 @@ class Hospital extends Model
         'property_id',
     ];
 }
+ 

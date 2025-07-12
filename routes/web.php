@@ -61,11 +61,16 @@ Route::delete('/properties/{id}', [PropertyController::class, 'destroy'])->name(
 
 
 //medicine route
-Route::get('/medicines', [MedicineController::class, 'index'])->name('medicines.index');
-Route::get('/medicines/create', [MedicineController::class, 'create'])->name('medicines.create');
-Route::post('/medicines', [MedicineController::class, 'store'])->name('medicines.store');
-Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('medicines.show');
-Route::resource('medicines', MedicineController::class);
+Route::get('/medicine', [MedicineController::class, 'create'])->name('medicine.create');
+Route::post('/medicine', [MedicineController::class, 'store'])->name('medicine.store');
+Route::get('/admin/medicine', [MedicineController::class, 'adminIndex'])->name('medicine.admin.index');
+Route::get('/medicine/{id}/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
+Route::put('/medicine/{id}', [MedicineController::class, 'update'])->name('medicine.update');
+Route::delete('/medicine/{id}', [MedicineController::class, 'destroy'])->name('medicine.destroy');
+Route::put('/medicine/{id}/status', [MedicineController::class, 'updateStatus'])->name('medicine.updateStatus');
+
+
+
 //order route
 Route::get('/order', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');

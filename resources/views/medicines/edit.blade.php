@@ -1,8 +1,9 @@
-<h2>Edit Medicine</h2>
+@extends('layouts.admin')
 
+@section('content')
 <h2 style="text-align: center; color: #2c3e50;">Edit Medicine</h2>
 
-<form method="POST" action="{{ route('medicines.update', $medicine->id) }}" enctype="multipart/form-data" style="max-width: 600px; margin: auto; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+<form method="POST" action="{{ route('medicine.update', $medicine->id) }}" enctype="multipart/form-data" style="max-width: 600px; margin: auto; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     @csrf
     @method('PUT')
 
@@ -49,21 +50,22 @@
 
     <label style="display: block; margin-top: 10px;">Disclaimer:</label>
     <textarea name="disclaimer" style="width: 100%; padding: 8px;">{{ old('disclaimer', $medicine->disclaimer) }}</textarea>
-  <label style="display: block; margin-top: 10px;">Manufacturer:</label>
-<input type="text" name="manufacturer" value="{{ $medicine->manufacturer }}" style="width: 100%; padding: 8px;">
 
-<label style="display: block; margin-top: 10px;">Generic Name:</label>
-<input type="text" name="generic_name" value="{{ $medicine->generic_name }}" style="width: 100%; padding: 8px;">
+    <label style="display: block; margin-top: 10px;">Manufacturer:</label>
+    <input type="text" name="manufacturer" value="{{ $medicine->manufacturer }}" style="width: 100%; padding: 8px;">
 
-<label style="display: block; margin-top: 10px;">Formula:</label>
-<input type="text" name="formula" value="{{ $medicine->formula }}" style="width: 100%; padding: 8px;">
+    <label style="display: block; margin-top: 10px;">Generic Name:</label>
+    <input type="text" name="generic_name" value="{{ $medicine->generic_name }}" style="width: 100%; padding: 8px;">
 
-<label style="display: block; margin-top: 10px;">Drug Class:</label>
-<input type="text" name="drug_class" value="{{ $medicine->drug_class }}" style="width: 100%; padding: 8px;">
+    <label style="display: block; margin-top: 10px;">Formula:</label>
+    <input type="text" name="formula" value="{{ $medicine->formula }}" style="width: 100%; padding: 8px;">
 
-<label style="display: block; margin-top: 10px;">Medicinal Form:</label>
-<input type="text" name="medicinal_form" value="{{ $medicine->medicinal_form }}" style="width: 100%; padding: 8px;">
+    <label style="display: block; margin-top: 10px;">Drug Class:</label>
+    <input type="text" name="drug_class" value="{{ $medicine->drug_class }}" style="width: 100%; padding: 8px;">
+
+    <label style="display: block; margin-top: 10px;">Medicinal Form:</label>
+    <input type="text" name="medicinal_form" value="{{ $medicine->medicinal_form }}" style="width: 100%; padding: 8px;">
 
     <button type="submit" style="margin-top: 20px; padding: 10px 20px; background-color: #2ecc71; color: white; border: none; border-radius: 5px;">Update</button>
 </form>
- 
+@endsection

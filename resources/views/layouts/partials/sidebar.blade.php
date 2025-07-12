@@ -26,20 +26,23 @@
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="{{url('Category')}}" data-bs-toggle="collapse" data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Products
-                               Mediciine
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{('products/create')}}">Static Add Products</a>
-                                    <a class="nav-link" href="{{url('products')}}">View Products</a>
-                                    <a class="nav-link" href="{{route('medicines.index')}}">All medicine</a>
-                                    <a class="nav-link" href="{{route('order.create')}}">Order medicine</a>
-                                </nav>
-                            </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMedicine" aria-expanded="false" aria-controls="collapseMedicine">
+                            <div class="sb-nav-link-icon"><i class="fas fa-pills"></i></div>
+                            Medicine Section
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+                        <div class="collapse" id="collapseMedicine" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ url('products/create') }}">Static Add Products</a>
+                                <a class="nav-link" href="{{ url('products') }}">View Products</a>
+                                <a class="nav-link" href="{{ route('medicine.admin.index') }}">All Medicines</a>
+                                <a class="nav-link" href="{{ route('medicine.create') }}">Add New Medicine</a>
+                                <a class="nav-link" href="{{ route('order.create') }}">Order Medicine</a>
+                            </nav>
+                        </div>
+
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseHospitalCategory" aria-expanded="false" aria-controls="collapseHospitalCategory">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
