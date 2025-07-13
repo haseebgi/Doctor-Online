@@ -1,37 +1,60 @@
-<div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f4f4f4;">
-    <form method="POST" action="{{ route('order.store') }}" enctype="multipart/form-data"
-          style="width: 400px; background-color: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+@extends('layouts.admin')
+
+@section('content')
+<div class="container my-4">
+    <h2 class="text-center mb-4">Order Medicine</h2>
+
+    <form method="POST" action="{{ route('order.store') }}" enctype="multipart/form-data" class="card p-4 shadow-sm">
         @csrf
 
-        <h2 style="text-align: center; font-size: 20px; color: #2c3e50; margin-bottom: 20px;">Order Medicine(s)</h2>
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
-        <label style="font-size: 14px; font-weight: bold;">Write your medicine</label>
-        <textarea name="medicine_name" rows="2" style="width: 100%; padding: 6px; font-size: 13px; margin-bottom: 10px;"></textarea>
+        <div class="row g-3">
+            <div class="col-md-12">
+                <label class="form-label">Write your medicine</label>
+                <textarea name="medicine_name" class="form-control" rows="2" placeholder="E.g., Panadol, Augmentin">{{ old('medicine_name') }}</textarea>
+            </div>
 
-        <p style="text-align: center; margin: 5px 0; font-weight: bold;">Or</p>
+            <div class="col-md-12 text-center fw-semibold text-secondary">— OR —</div>
 
-        <label style="font-size: 14px; font-weight: bold;">Attach prescription</label>
-        <input type="file" name="prescription" style="margin-bottom: 10px; font-size: 13px;"><br>
+            <div class="col-md-12">
+                <label class="form-label">Attach prescription</label>
+                <input type="file" name="prescription" class="form-control">
+            </div>
 
-        <label style="font-size: 14px; font-weight: bold;">Write your address</label>
-        <textarea name="address" required rows="2" style="width: 100%; padding: 6px; font-size: 13px; margin-bottom: 10px;"></textarea>
+            <div class="col-md-12">
+                <label class="form-label">Write your address</label>
+                <textarea name="address" class="form-control" rows="2" placeholder="Complete delivery address" required>{{ old('address') }}</textarea>
+            </div>
 
-        <label style="font-size: 14px; font-weight: bold;">Enter Phone Number</label>
-        <input type="text" name="phone_number" required style="width: 100%; padding: 6px; font-size: 13px; margin-bottom: 10px;">
+            <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone_number" class="form-control" required placeholder="03xx-xxxxxxx" value="{{ old('phone_number') }}">
+            </div>
 
-        <label style="font-size: 14px; font-weight: bold;">Add Patient Name</label>
-        <input type="text" name="patient_name" required style="width: 100%; padding: 6px; font-size: 13px; margin-bottom: 10px;">
+            <div class="col-md-6">
+                <label class="form-label">Patient Name</label>
+                <input type="text" name="patient_name" class="form-control" required value="{{ old('patient_name') }}">
+            </div>
 
-        <label style="font-size: 14px; font-weight: bold;">Select City</label>
-        <select name="city" required style="width: 100%; padding: 6px; font-size: 13px; margin-bottom: 15px;">
-            <option value="">Choose City</option>
-            <option>Lahore</option>
-            <option>Karachi</option>
-            <option>Islamabad</option>
-        </select>
+            <div class="col-md-12">
+                <label class="form-label">Select City</label>
+                <select name="city" class="form-select" required>
+                    <option value="">Choose City</option>
+                    <option value="Lahore" {{ old('city') == 'Lahore' ? 'selected' : '' }}>Lahore</option>
+                    <option value="Karachi" {{ old('city') == 'Karachi' ? 'selected' : '' }}>Karachi</option>
+                    <option value="Islamabad" {{ old('city') == 'Islamabad' ? 'selected' : '' }}>Islamabad</option>
+                    <option value="Rawalpindi" {{ old('city') == 'Rawalpindi' ? 'selected' : '' }}>Rawalpindi</option>
+                    <option value="Faisalabad" {{ old('city') == 'Faisalabad' ? 'selected' : '' }}>Faisalabad</option>
+                </select>
+            </div>
 
-        <button type="submit" style="background-color: #c0392b; color: white; padding: 10px; font-size: 14px; border: none; border-radius: 4px; width: 100%;">
-            Submit
-        </button>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary w-100">Submit Order</button>
+            </div>
+        </div>
     </form>
 </div>
+@endsection

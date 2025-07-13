@@ -1,42 +1,77 @@
-<h2 style="text-align: center; color: #2c3e50;">Edit Order</h2>
+@extends('layouts.admin')
 
-<form method="POST" action="{{ route('order.update', $order->id) }}" enctype="multipart/form-data"
-    style="max-width: 600px; margin: 30px auto; background-color: #f9f9f9; padding: 25px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    
-    @csrf
-    @method('PUT')
+@section('content')
 
-    <label style="font-weight: bold;">Patient Name:</label>
-    <input type="text" name="patient_name" value="{{ $order->patient_name }}" required style="width: 100%; padding: 8px; margin-bottom: 15px;"><br>
+<div class="container my-5" style="max-width: 700px;">
+    <h2 class="text-center text-primary mb-4">Edit Order</h2>
 
-    <label style="font-weight: bold;">Phone Number:</label>
-    <input type="text" name="phone_number" value="{{ $order->phone_number }}" required style="width: 100%; padding: 8px; margin-bottom: 15px;"><br>
+    <form method="POST" action="{{ route('order.update', $order->id) }}" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
+        @csrf
+        @method('PUT')
 
-    <label style="font-weight: bold;">City:</label>
-    <select name="city" required style="width: 100%; padding: 8px; margin-bottom: 15px;">
-        <option value="">Choose City</option>
-        <option {{ $order->city == 'Sargodha' ? 'selected' : '' }}>Lahore</option>
-        <option {{ $order->city == 'lahore' ? 'selected' : '' }}>Karachi</option>
-        <option {{ $order->city == 'Islamabad' ? 'selected' : '' }}>Islamabad</option>
-    </select>
+        <div class="row mb-3">
+            <label for="patient_name" class="col-form-label fw-bold col-12">Patient Name:</label>
+            <div class="col-12">
+                <input type="text" id="patient_name" name="patient_name" value="{{ $order->patient_name }}" required class="form-control">
+            </div>
+        </div>
 
-    <label style="font-weight: bold;">Medicine Name:</label>
-    <textarea name="medicine_name" style="width: 100%; padding: 8px; margin-bottom: 15px;">{{ $order->medicine_name }}</textarea><br>
+        <div class="row mb-3">
+            <label for="phone_number" class="col-form-label fw-bold col-12">Phone Number:</label>
+            <div class="col-12">
+                <input type="text" id="phone_number" name="phone_number" value="{{ $order->phone_number }}" required class="form-control">
+            </div>
+        </div>
 
-    <label style="font-weight: bold;">Address:</label>
-    <textarea name="address" required style="width: 100%; padding: 8px; margin-bottom: 15px;">{{ $order->address }}</textarea><br>
+        <div class="row mb-3">
+            <label for="city" class="col-form-label fw-bold col-12">City:</label>
+            <div class="col-12">
+                <select id="city" name="city" required class="form-select">
+                    <option value="">Choose City</option>
+                    <option value="Lahore" {{ strtolower($order->city) == 'lahore' ? 'selected' : '' }}>Lahore</option>
+                    <option value="Karachi" {{ strtolower($order->city) == 'karachi' ? 'selected' : '' }}>Karachi</option>
+                    <option value="Islamabad" {{ strtolower($order->city) == 'islamabad' ? 'selected' : '' }}>Islamabad</option>
+                </select>
+            </div>
+        </div>
 
-    <label style="font-weight: bold;">Prescription (Upload to Replace):</label>
-    <input type="file" name="prescription" style="width: 100%; padding: 6px;"><br><br>
+        <div class="row mb-3">
+            <label for="medicine_name" class="col-form-label fw-bold col-12">Medicine Name:</label>
+            <div class="col-12">
+                <textarea id="medicine_name" name="medicine_name" rows="3" class="form-control">{{ $order->medicine_name }}</textarea>
+            </div>
+        </div>
 
-    @if($order->prescription)
-        <p>Current Prescription: 
-            <a href="{{ asset('storage/' . $order->prescription) }}" target="_blank" style="color: #3490dc;">View</a>
-        </p>
-    @endif
+        <div class="row mb-3">
+            <label for="address" class="col-form-label fw-bold col-12">Address:</label>
+            <div class="col-12">
+                <textarea id="address" name="address" rows="3" required class="form-control">{{ $order->address }}</textarea>
+            </div>
+        </div>
 
-    <button type="submit"
-        style="background-color: #3490dc; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-        Update Order
-    </button>
-</form>
+        <div class="row mb-3">
+            <label for="prescription" class="col-form-label fw-bold col-12">Prescription (Upload to Replace):</label>
+            <div class="col-12">
+                <input type="file" id="prescription" name="prescription" class="form-control">
+            </div>
+        </div>
+
+        @if($order->prescription)
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p>Current Prescription: 
+                        <a href="{{ asset('storage/' . $order->prescription) }}" target="_blank" class="text-primary">View</a>
+                    </p>
+                </div>
+            </div>
+        @endif
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary w-100">Update Order</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@endsection
