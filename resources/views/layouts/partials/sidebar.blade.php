@@ -7,10 +7,7 @@
                                 Dashboard
                             </a>
                          
-                            <a class="nav-link" href="{{url('Category')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Category
-                            </a>
+                           
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="{{url('Category')}}" data-bs-toggle="collapse" data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -35,8 +32,6 @@
 
                         <div class="collapse" id="collapseMedicine" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ url('products/create') }}">Static Add Products</a>
-                                <a class="nav-link" href="{{ url('products') }}">View Products</a>
                                 <a class="nav-link" href="{{ route('medicine.admin.index') }}">All Medicines</a>
                                 <a class="nav-link" href="{{ route('medicine.create') }}">Add New Medicine</a>
                                 <a class="nav-link" href="{{ route('order.create') }}">Order Medicine</a>
@@ -182,15 +177,7 @@
                                     </div>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
+                        
                         </div>
                     </div>
                   
