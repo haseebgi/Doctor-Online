@@ -21,7 +21,7 @@ class Medicine extends Model
     'expert_advice',
     'faq',
     'disclaimer',
-     'manufacturer',
+    'manufacturer',
     'generic_name',
     'formula',
     'drug_class',
