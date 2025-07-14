@@ -20,7 +20,12 @@ class Medicine extends Model
     'prescription_required',
     'expert_advice',
     'faq',
-    'disclaimer'
+    'disclaimer',
+     'manufacturer',
+    'generic_name',
+    'formula',
+    'drug_class',
+    'medicinal_form'
 ];
 
 }
