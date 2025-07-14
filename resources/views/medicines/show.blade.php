@@ -49,7 +49,7 @@
     </div>
 
     <div style="margin-top: 30px; text-align: center;">
-        <a href="{{ route('medicines.index') }}" 
+        <a href="{{ route('medicine.admin.index') }}" 
            style="text-decoration: none; padding: 10px 25px; background-color: #3498db; color: white; border-radius: 6px; font-weight: bold;">
             ← Back to Medicines
         </a>

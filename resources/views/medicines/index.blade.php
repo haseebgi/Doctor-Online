@@ -24,7 +24,9 @@
                 </td>
                 <td>{{ $medicine->name }}</td>
                 <td>{{ $medicine->price }}</td>
+
                 <td>
+                          <a href="{{ route('medicine.show', $medicine->id) }}">view</a> |
                     <a href="{{ route('medicine.edit', $medicine->id) }}">Edit</a> |
 
                     <form action="{{ route('medicine.destroy', $medicine->id) }}" method="POST" style="display:inline;">

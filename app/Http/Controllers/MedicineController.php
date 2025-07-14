@@ -28,6 +28,7 @@ class MedicineController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string',
+          'description' => 'nullable|string',
             'price' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'uses' => 'nullable|string',
@@ -64,40 +65,42 @@ class MedicineController extends Controller
         return view('medicines.edit', compact('medicine'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $medicine = Medicine::findOrFail($id);
+   public function update(Request $request, $id)
+{
+    $medicine = Medicine::findOrFail($id);
 
-        $data = $request->validate([
-            'name' => 'required|string',
-            'price' => 'nullable|numeric',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'uses' => 'nullable|string',
-            'dosage' => 'nullable|string',
-            'warnings' => 'nullable|string',
-            'precautions' => 'nullable|string',
-            'side_effects' => 'nullable|string',
-            'packaging' => 'nullable|string',
-            'prescription_required' => 'nullable|boolean',
-            'expert_advice' => 'nullable|string',
-            'faq' => 'nullable|string',
-            'disclaimer' => 'nullable|string',
-            'manufacturer' => 'nullable|string',
-            'generic_name' => 'nullable|string',
-            'formula' => 'nullable|string',
-            'drug_class' => 'nullable|string',
-            'medicinal_form' => 'nullable|string',
-        ]);
+    $data = $request->validate([
+        'name' => 'required|string',
+        'description' => 'nullable|string', // ✅ added this
+        'price' => 'nullable|numeric',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'uses' => 'nullable|string',
+        'dosage' => 'nullable|string',
+        'warnings' => 'nullable|string',
+        'precautions' => 'nullable|string',
+        'side_effects' => 'nullable|string',
+        'packaging' => 'nullable|string',
+        'prescription_required' => 'nullable|boolean',
+        'expert_advice' => 'nullable|string',
+        'faq' => 'nullable|string',
+        'disclaimer' => 'nullable|string',
+        'manufacturer' => 'nullable|string',
+        'generic_name' => 'nullable|string',
+        'formula' => 'nullable|string',
+        'drug_class' => 'nullable|string',
+        'medicinal_form' => 'nullable|string',
+    ]);
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('medicines', 'public');
-        }
-
-        $data['prescription_required'] = $request->has('prescription_required');
-        $medicine->update($data);
-
-        return redirect()->route('medicine.admin.index')->with('success', 'Medicine updated successfully.');
+    if ($request->hasFile('image')) {
+        $data['image'] = $request->file('image')->store('medicines', 'public');
     }
+
+    $data['prescription_required'] = $request->has('prescription_required');
+    $medicine->update($data);
+
+    return redirect()->route('medicine.admin.index')->with('success', 'Medicine updated successfully.');
+}
+
 
     public function destroy($id)
     {

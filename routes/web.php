@@ -82,6 +82,19 @@ Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.d
 Route::put('/order/{id}/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
 
 
+//medicine route
+Route::get('/medicine', [MedicineController::class, 'create'])->name('medicine.create');
+Route::post('/medicine', [MedicineController::class, 'store'])->name('medicine.store');
+Route::get('/admin/medicine', [MedicineController::class, 'adminIndex'])->name('medicine.admin.index');
+Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicine.show');
+Route::get('/medicine/{id}/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
+Route::delete('/medicine/{id}', [MedicineController::class, 'destroy'])->name('medicine.destroy');
+Route::get('/medicine', [MedicineController::class, 'create'])->name('medicine.create');
+Route::post('/medicines', [MedicineController::class, 'store'])->name('medicine.store');
+
+Route::get('/admin/medicine', [MedicineController::class, 'index'])->name('medicine.admin.index');
+
+
 
 
 

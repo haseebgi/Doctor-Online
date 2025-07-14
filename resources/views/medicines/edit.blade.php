@@ -11,7 +11,8 @@
     <input type="text" name="name" value="{{ $medicine->name }}" required style="width: 100%; padding: 8px;">
 
     <label style="display: block; margin-top: 10px;">Description:</label>
-    <textarea name="description" style="width: 100%; padding: 8px;">{{ $medicine->description }}</textarea>
+ <textarea name="description" style="width: 100%; padding: 8px;">{{ old('description', $medicine->description) }}</textarea>
+
 
     <label style="display: block; margin-top: 10px;">Price (PKR):</label>
     <input type="text" name="price" value="{{ $medicine->price }}" style="width: 100%; padding: 8px;">
