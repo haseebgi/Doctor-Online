@@ -18,21 +18,21 @@
         </div>
     @endif
 
-    <form action="{{ route('diseases.update', $disease->id) }}" method="POST">
+    <form action="{{ route('diseases.update', $disease->id) }}" method="POST" class="p-4 bg-light border rounded shadow-sm">
         @csrf
         @method('PUT')
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="mb-3">
-                    <label>Disease Name</label>
+                    <label class="form-label">Disease Name</label>
                     <input type="text" name="name" class="form-control" value="{{ $disease->name }}" required>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="mb-3">
-                    <label>Description</label>
+                    <label class="form-label">Description</label>
                     <textarea name="description" class="form-control" rows="3">{{ $disease->description }}</textarea>
                 </div>
             </div>

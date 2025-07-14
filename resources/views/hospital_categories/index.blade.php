@@ -20,7 +20,7 @@
     @endif
 
     <table class="table table-bordered table-hover">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th>ID</th>
                 <th>Title</th>

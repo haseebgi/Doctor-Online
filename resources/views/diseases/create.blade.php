@@ -17,12 +17,12 @@
         </div>
     @endif
 
-    <form action="{{ route('diseases.store') }}" method="POST">
+    <form action="{{ route('diseases.store') }}" method="POST" class="p-4 border rounded bg-light shadow-sm">
         @csrf
 
         <div class="row">
             {{-- Disease Name --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="mb-3">
                     <label for="name" class="form-label">Disease Name</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"

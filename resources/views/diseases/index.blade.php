@@ -11,7 +11,7 @@
     @endif
 
     <table class="table table-bordered">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th>Name</th>
                 <th>Description</th>

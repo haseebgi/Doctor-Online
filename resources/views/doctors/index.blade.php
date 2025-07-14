@@ -9,7 +9,7 @@
     @endif
 
     <table class="table table-bordered">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th>Image</th>
                 <th>Name</th>
@@ -42,13 +42,16 @@
                 <td>{{ $doctor->hospital_name }}</td>
                 <td>{{ $doctor->hospital_location }}</td>
                 <td>
-                    <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST" style="display:inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
+                    <div class="d-flex gap-1">
+                        <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
                 </td>
+
             </tr>
             @endforeach
         </tbody>

@@ -3,7 +3,7 @@
 
 <div class="container mt-5">
     <div class="card shadow border-0">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-light text-dark">
             <h4 class="mb-0">Create New Product</h4>
         </div>
 

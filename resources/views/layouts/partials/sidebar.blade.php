@@ -32,8 +32,8 @@
 
                         <div class="collapse" id="collapseMedicine" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('medicine.admin.index') }}">All Medicines</a>
                                 <a class="nav-link" href="{{ route('medicine.create') }}">Add New Medicine</a>
+                                <a class="nav-link" href="{{ route('medicine.admin.index') }}">All Medicines</a>
                                 <a class="nav-link" href="{{ route('order.create') }}">Order Medicine</a>
                             </nav>
                         </div>

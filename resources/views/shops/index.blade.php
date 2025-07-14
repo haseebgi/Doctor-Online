@@ -10,7 +10,7 @@
     @endif
 
     <table class="table table-bordered">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th>Image</th>
                 <th>Title</th>

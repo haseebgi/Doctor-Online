@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <h2>Edit Product</h2>
 
-    <form method="POST" action="{{ route('shops.update', $shop->id) }}" enctype="multipart/form-data" class="p-4 bg-light rounded shadow-sm w-50">
+    <form method="POST" action="{{ route('shops.update', $shop->id) }}" enctype="multipart/form-data" class="p-4 bg-light rounded shadow-sm col-12">
         @csrf
         @method('PUT')
 
