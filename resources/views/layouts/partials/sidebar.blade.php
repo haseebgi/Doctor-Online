@@ -136,17 +136,18 @@
 
 
                                     <!-- Category Menu (use unique ID) -->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
-                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-                                Category
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseCategory" aria-labelledby="headingCategory" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Create Category</a>
-                                    <a class="nav-link" href="register.html">View Category</a>
-                                </nav>
-                            </div>
+                           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            Category
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseCategory" aria-labelledby="headingCategory" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('categories.create') }}">Create Category</a>
+                                <a class="nav-link" href="{{ route('categories.index') }}">View Categories</a>
+                            </nav>
+                        </div>
+
 
 
 

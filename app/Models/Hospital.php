@@ -22,5 +22,22 @@ class Hospital extends Model
         'hospital_category_id',
         'property_id',
     ];
+
+    // ✅ One hospital has many doctors
+    public function doctors()
+    {
+        return $this->hasMany(\App\Models\Doctor::class);
+    }
+
+    // ✅ Hospital belongs to a hospital category
+    public function hospitalCategory()
+    {
+        return $this->belongsTo(\App\Models\HospitalCategory::class, 'hospital_category_id');
+    }
+
+    // (Optional) If you want to add relationship with property
+    public function property()
+    {
+        return $this->belongsTo(\App\Models\Property::class);
+    }
 }
- 

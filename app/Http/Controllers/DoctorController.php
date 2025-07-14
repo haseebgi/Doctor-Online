@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Category;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,14 +13,16 @@ class DoctorController extends Controller
     // Display all doctors
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('category', 'hospital')->get();
         return view('doctors.index', compact('doctors'));
     }
 
     // Show the create form
     public function create()
     {
-        return view('doctors.create');
+        $categories = Category::all();
+        $hospitals = Hospital::all();
+        return view('doctors.create', compact('categories', 'hospitals'));
     }
 
     // Store new doctor in database
@@ -38,6 +42,8 @@ class DoctorController extends Controller
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'hospital_id' => 'required|integer|exists:hospitals,id',
+            'category_id' => 'required|integer|exists:categories,id',
         ]);
 
         if ($request->hasFile('image')) {
@@ -51,7 +57,9 @@ class DoctorController extends Controller
     // Show the edit form
     public function edit(Doctor $doctor)
     {
-        return view('doctors.edit', compact('doctor'));
+        $categories = Category::all();
+        $hospitals = Hospital::all();
+        return view('doctors.edit', compact('doctor', 'categories', 'hospitals'));
     }
 
     // Update doctor
@@ -71,10 +79,11 @@ class DoctorController extends Controller
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'hospital_id' => 'required|integer|exists:hospitals,id',
+            'category_id' => 'required|integer|exists:categories,id',
         ]);
 
         if ($request->hasFile('image')) {
-            // Delete old image if it exists
             if ($doctor->image && Storage::disk('public')->exists($doctor->image)) {
                 Storage::disk('public')->delete($doctor->image);
             }

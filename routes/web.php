@@ -11,6 +11,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -99,3 +100,7 @@ Route::resource('doctors', DoctorController::class);
 //
 
 Route::resource('diseases', DiseaseController::class);
+
+//category:
+
+Route::resource('categories', CategoryController::class);
