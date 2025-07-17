@@ -69,6 +69,28 @@ Route::delete('/medicine/{id}', [MedicineController::class, 'destroy'])->name('m
 Route::put('/medicine/{id}/status', [MedicineController::class, 'updateStatus'])->name('medicine.updateStatus');
 Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicine.show');
 Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicine.show');
+     //medicine category
+
+
+     use App\Http\Controllers\MedicineCategoryController;
+
+// Display all categories
+Route::get('/medcategories', [MedicineCategoryController::class, 'index'])->name('medcategories.index');
+
+// Show the create form
+Route::get('/medcategories/create', [MedicineCategoryController::class, 'create'])->name('medcategories.create');
+
+// Store a new category
+Route::post('/medcategories', [MedicineCategoryController::class, 'store'])->name('medcategories.store');
+
+// Show the edit form
+Route::get('/medcategories/{id}/edit', [MedicineCategoryController::class, 'edit'])->name('medcategories.edit');
+
+// Update the category
+Route::put('/medcategories/{id}', [MedicineCategoryController::class, 'update'])->name('medcategories.update');
+
+// Delete a category
+Route::delete('/medcategories/{id}', [MedicineCategoryController::class, 'destroy'])->name('medcategories.destroy');
 
 
 
