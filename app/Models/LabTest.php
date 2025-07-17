@@ -1,22 +1,20 @@
 <?php
 
-// app/Models/LabTest.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class LabTest extends Model
 {
-    protected $fillable = ['lab_id', 'test_name', 'price', 'discount'];
+    protected $fillable = ['lab_id', 'test_name', 'price'];
 
     public function lab()
     {
         return $this->belongsTo(Lab::class);
     }
 
-    public function bookings()
+    public function bodyTests()
     {
-        return $this->hasMany(Booking::class);
+        return $this->belongsToMany(BodyTest::class);
     }
 }

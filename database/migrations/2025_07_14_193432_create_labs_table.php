@@ -8,17 +8,18 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLabsTable extends Migration
 {
-    public function up()
-    {
-        Schema::create('labs', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->timestamps();
-        });
-    }
+    // database/migrations/xxxx_xx_xx_create_labs_table.php
+        public function up()
+        {
+            Schema::create('labs', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('location')->nullable();
+                $table->string('contact')->nullable();
+                $table->timestamps();
+            });
+        }
+
 
     public function down()
     {

@@ -15,6 +15,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\LabTestController;
 use App\Http\Controllers\BookingController;
+ use App\Http\Controllers\MedicineCategoryController;
+
 
 
 // Route::get('/', function () {
@@ -72,8 +74,7 @@ Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicin
      //medicine category
 
 
-     use App\Http\Controllers\MedicineCategoryController;
-
+    
 // Display all categories
 Route::get('/medcategories', [MedicineCategoryController::class, 'index'])->name('medcategories.index');
 Route::get('/medcategories/create', [MedicineCategoryController::class, 'create'])->name('medcategories.create');
@@ -104,6 +105,8 @@ Route::resource('hospitals', HospitalController::class);
 
 
 Route::resource('labs', LabController::class);
+Route::get('/locations/search', [App\Http\Controllers\LabController::class, 'searchLocations'])->name('locations.search');
+
 Route::resource('lab_tests', LabTestController::class);
 
 //surgeries
