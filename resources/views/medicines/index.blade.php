@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container my-4">
-    <h2 class="text-center  mb-4">All Medicines</h2>
+    <h2 class="text-center mb-4">All Medicines</h2>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -30,6 +30,8 @@
                 <th>Formula</th>
                 <th>Drug Class</th>
                 <th>Medicinal Form</th>
+                <th>Company Name</th>
+                <th>Brand Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -61,6 +63,15 @@
                     <td>{{ $medicine->formula }}</td>
                     <td>{{ $medicine->drug_class }}</td>
                     <td>{{ $medicine->medicinal_form }}</td>
+
+                    {{-- ✅ Company and Brand --}}
+                    @if($medicine->category)
+                        <td>{{ $medicine->category->company_name }}</td>
+                        <td>{{ $medicine->category->brand_name }}</td>
+                    @else
+                        <td colspan="2"><em>No Category</em></td>
+                    @endif
+
                     <td>
                         <div class="d-flex gap-1">
                             <a href="{{ route('medicine.show', $medicine->id) }}" class="btn btn-info btn-sm">View</a>

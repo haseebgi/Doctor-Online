@@ -12,7 +12,7 @@
                     <img src="{{ asset('storage/' . $medicine->image) }}" 
                          alt="{{ $medicine->name }}" 
                          class="img-fluid rounded shadow"
-                         style="max-height: 500px; object-fit: cover; width: 100%";>
+                         style="max-height: 500px; object-fit: cover; width: 100%;">
                 @else
                     <div class="text-muted">No image available</div>
                 @endif
@@ -33,6 +33,14 @@
                     <li class="list-group-item"><strong>🧬 Formula:</strong> {{ $medicine->formula ?? 'N/A' }}</li>
                     <li class="list-group-item"><strong>📚 Drug Class:</strong> {{ $medicine->drug_class ?? 'N/A' }}</li>
                     <li class="list-group-item"><strong>💉 Medicinal Form:</strong> {{ $medicine->medicinal_form ?? 'N/A' }}</li>
+
+                    {{-- ✅ Company and Brand --}}
+                    @if($medicine->category)
+                        <li class="list-group-item"><strong>🏭 Company Name:</strong> {{ $medicine->category->company_name }}</li>
+                        <li class="list-group-item"><strong>📢 Brand Name:</strong> {{ $medicine->category->brand_name }}</li>
+                    @else
+                        <li class="list-group-item"><strong>Category:</strong> <em>No Category Assigned</em></li>
+                    @endif
                 </ul>
             </div>
         </div>

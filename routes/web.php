@@ -12,6 +12,8 @@ use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MedicineCategoryController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -83,6 +85,16 @@ Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.updat
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 Route::put('/order/{id}/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
 
+//catgory route
+
+Route::get('/medcategories/create', [MedicineCategoryController::class, 'create'])->name('medcategories.create');
+Route::post('/medcategories/store', [MedicineCategoryController::class, 'store'])->name('medcategories.store');
+Route::get('/medcategories', [MedicineCategoryController::class, 'index'])->name('medcategories.index');
+Route::get('/medcategories/{id}/edit', [MedicineCategoryController::class, 'edit'])->name('medcategories.edit');
+Route::put('/medcategories/{id}', [MedicineCategoryController::class, 'update'])->name('medcategories.update');
+Route::delete('/medcategories/{id}', [MedicineCategoryController::class, 'destroy'])->name('medcategories.destroy');
+
+Route::resource('categories', MedicineCategoryController::class);
 
 
 
