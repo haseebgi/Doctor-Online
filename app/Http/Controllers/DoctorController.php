@@ -13,7 +13,11 @@ class DoctorController extends Controller
     // Display all doctors
     public function index()
     {
-        $doctors = Doctor::with('category', 'hospital')->get();
+        $doctors = Doctor::with('category', 'hospital')
+            ->orderBy('sponsored', 'desc')  // Show sponsored doctors first
+            ->orderBy('name', 'asc')        // Then sort by name
+            ->get();
+
         return view('doctors.index', compact('doctors'));
     }
 
@@ -46,11 +50,16 @@ class DoctorController extends Controller
             'category_id' => 'required|integer|exists:categories,id',
         ]);
 
+        // Handle file upload
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('doctor_images', 'public');
         }
 
+        // Sponsored flag
+        $data['sponsored'] = $request->has('sponsored');
+
         Doctor::create($data);
+
         return redirect()->route('doctors.index')->with('success', 'Doctor created successfully.');
     }
 
@@ -83,6 +92,7 @@ class DoctorController extends Controller
             'category_id' => 'required|integer|exists:categories,id',
         ]);
 
+        // Image update
         if ($request->hasFile('image')) {
             if ($doctor->image && Storage::disk('public')->exists($doctor->image)) {
                 Storage::disk('public')->delete($doctor->image);
@@ -91,7 +101,11 @@ class DoctorController extends Controller
             $data['image'] = $request->file('image')->store('doctor_images', 'public');
         }
 
+        // Sponsored flag
+        $data['sponsored'] = $request->has('sponsored');
+
         $doctor->update($data);
+
         return redirect()->route('doctors.index')->with('success', 'Doctor updated successfully.');
     }
 
@@ -103,6 +117,7 @@ class DoctorController extends Controller
         }
 
         $doctor->delete();
+
         return back()->with('success', 'Doctor deleted successfully.');
     }
 }

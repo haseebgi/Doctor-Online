@@ -108,3 +108,5 @@ Route::resource('diseases', DiseaseController::class);
 //category:
 
 Route::resource('categories', CategoryController::class);
+
+//end

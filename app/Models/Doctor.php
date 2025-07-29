@@ -20,17 +20,18 @@ class Doctor extends Model
         'latitude',
         'longitude',
         'image',
-        'hospital_id',    // ✅ added relationship field
-        'category_id',    // ✅ added relationship field
+        'hospital_id',    // Foreign key to hospitals table
+        'category_id',    // Foreign key to categories table
+        'sponsored',      // ✅ New field for sponsored doctors
     ];
 
-    // ✅ Doctor belongs to a Category
+    // Relationship: Doctor belongs to a Category
     public function category()
     {
         return $this->belongsTo(\App\Models\Category::class);
     }
 
-    // ✅ Doctor belongs to a Hospital
+    // Relationship: Doctor belongs to a Hospital
     public function hospital()
     {
         return $this->belongsTo(\App\Models\Hospital::class);

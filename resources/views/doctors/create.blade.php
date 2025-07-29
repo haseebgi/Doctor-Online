@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="container mt-4">
     <h2>Add Doctor</h2>
@@ -115,6 +116,12 @@
                 <div class="mb-3">
                     <label>Image</label>
                     <input type="file" name="image" class="form-control">
+                </div>
+
+                {{-- Sponsored Checkbox --}}
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="sponsored" id="sponsored" {{ old('sponsored') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="sponsored">Mark as Sponsored</label>
                 </div>
             </div>
         </div>

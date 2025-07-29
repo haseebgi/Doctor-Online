@@ -28,7 +28,7 @@
 
         <div class="mb-3">
             <label class="form-label">Hospital Name</label>
-            <input type="text" name="name" class="form-control" required>
+            <input type="text" name="name" class="form-control" required value="{{ old('name') }}">
         </div>
 
         <div class="mb-3">
@@ -38,47 +38,37 @@
 
         <div class="mb-3">
             <label class="form-label">Title</label>
-            <input type="text" name="title" class="form-control">
+            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Description</label>
-            <textarea name="description" class="form-control"></textarea>
+            <textarea name="description" class="form-control">{{ old('description') }}</textarea>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Phone No</label>
-            <input type="text" name="phone_no" class="form-control">
+            <input type="text" name="phone_no" class="form-control" value="{{ old('phone_no') }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Address</label>
-            <input type="text" name="address" class="form-control">
+            <input type="text" name="address" class="form-control" value="{{ old('address') }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Location</label>
-            <input type="text" name="location" class="form-control">
+            <input type="text" name="location" class="form-control" value="{{ old('location') }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Latitude</label>
-            <input type="text" name="latitude" class="form-control">
+            <input type="text" name="latitude" class="form-control" value="{{ old('latitude') }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Longitude</label>
-            <input type="text" name="longitude" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Hospital Category ID</label>
-            <input type="number" name="hospital_category_id" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Property ID</label>
-            <input type="number" name="property_id" class="form-control" required>
+            <input type="text" name="longitude" class="form-control" value="{{ old('longitude') }}">
         </div>
 
         <button type="submit" class="btn btn-success">Save Hospital</button>

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hospital;
-use App\Models\HospitalCategory;
-use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,9 +16,7 @@ class HospitalController extends Controller
 
     public function create()
     {
-        $categories = HospitalCategory::all();
-        $properties = Property::all();
-        return view('hospitals.create', compact('categories', 'properties'));
+        return view('hospitals.create');
     }
 
     public function store(Request $request)
@@ -35,8 +31,6 @@ class HospitalController extends Controller
             'location' => 'nullable|string',
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
-            'hospital_category_id' => 'required|integer',
-            'property_id' => 'required|integer',
         ]);
 
         if ($request->hasFile('icon')) {
@@ -49,9 +43,7 @@ class HospitalController extends Controller
 
     public function edit(Hospital $hospital)
     {
-        $categories = HospitalCategory::all();
-        $properties = Property::all();
-        return view('hospitals.edit', compact('hospital', 'categories', 'properties'));
+        return view('hospitals.edit', compact('hospital'));
     }
 
     public function update(Request $request, Hospital $hospital)
@@ -66,8 +58,6 @@ class HospitalController extends Controller
             'location' => 'nullable|string',
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
-            'hospital_category_id' => 'required|integer',
-            'property_id' => 'required|integer',
         ]);
 
         if ($request->hasFile('icon')) {

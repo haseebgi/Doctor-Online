@@ -21,8 +21,6 @@
                 <th>Location</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>Category ID</th>
-                <th>Property ID</th>
                 <th>Map</th>
                 <th>Actions</th>
             </tr>
@@ -41,8 +39,6 @@
                 <td>{{ $hospital->location }}</td>
                 <td>{{ $hospital->latitude }}</td>
                 <td>{{ $hospital->longitude }}</td>
-                <td>{{ $hospital->hospital_category_id }}</td>
-                <td>{{ $hospital->property_id }}</td>
                 <td>
                     @if($hospital->latitude && $hospital->longitude)
                         <a href="https://www.google.com/maps/search/?api=1&query={{ $hospital->latitude }},{{ $hospital->longitude }}"
@@ -61,7 +57,6 @@
                         </form>
                     </div>
                 </td>
-
             </tr>
             @endforeach
         </tbody>

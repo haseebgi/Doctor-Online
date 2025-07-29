@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="container mt-4">
     <h2>Edit Doctor</h2>
@@ -117,6 +118,12 @@
                     @if($doctor->image)
                         <img src="{{ asset('storage/' . $doctor->image) }}" width="80" class="mt-2" alt="Doctor Image">
                     @endif
+                </div>
+
+                {{-- Sponsored Checkbox --}}
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="sponsored" id="sponsored" {{ old('sponsored', $doctor->sponsored) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="sponsored">Mark as Sponsored</label>
                 </div>
             </div>
         </div>

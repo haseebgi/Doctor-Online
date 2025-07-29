@@ -19,8 +19,6 @@ class Hospital extends Model
         'location',
         'latitude',
         'longitude',
-        'hospital_category_id',
-        'property_id',
     ];
 
     // ✅ One hospital has many doctors

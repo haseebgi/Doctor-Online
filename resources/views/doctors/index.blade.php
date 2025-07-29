@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <div class="container mt-4">
     <h2>All Doctors</h2>
@@ -31,7 +32,12 @@
                 <td>
                     <img src="{{ $doctor->image ? asset('storage/' . $doctor->image) : asset('images/default.png') }}" width="60">
                 </td>
-                <td>{{ $doctor->name }}</td>
+                <td>
+                    {{ $doctor->name }}
+                    @if($doctor->sponsored)
+                        <span class="badge bg-warning text-dark">Sponsored</span>
+                    @endif
+                </td>
                 <td>{{ $doctor->designation }}</td>
                 <td>{{ $doctor->qualifications }}</td>
                 <td>{{ $doctor->experience_years }} years</td>
@@ -51,7 +57,6 @@
                         </form>
                     </div>
                 </td>
-
             </tr>
             @endforeach
         </tbody>
