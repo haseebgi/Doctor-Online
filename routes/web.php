@@ -12,6 +12,12 @@ use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\LabTestController;
+use App\Http\Controllers\BookingController;
+ use App\Http\Controllers\MedicineCategoryController;
+
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -34,12 +40,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
-
-//hospital-category
-
-
-Route::resource('hospitals', HospitalController::class);
 
 // ✅ Manually register routes for hospital categories (because you're not using resource here)
 Route::get('/hospital-categories', [HospitalCategoryController::class, 'index'])->name('hospital_categories.index');
@@ -71,6 +71,17 @@ Route::delete('/medicine/{id}', [MedicineController::class, 'destroy'])->name('m
 Route::put('/medicine/{id}/status', [MedicineController::class, 'updateStatus'])->name('medicine.updateStatus');
 Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicine.show');
 Route::get('/medicine/{id}', [MedicineController::class, 'show'])->name('medicine.show');
+     //medicine category
+
+
+    
+// Display all categories
+Route::get('/medcategories', [MedicineCategoryController::class, 'index'])->name('medcategories.index');
+Route::get('/medcategories/create', [MedicineCategoryController::class, 'create'])->name('medcategories.create');
+Route::post('/medcategories', [MedicineCategoryController::class, 'store'])->name('medcategories.store');
+Route::get('/medcategories/{id}/edit', [MedicineCategoryController::class, 'edit'])->name('medcategories.edit');
+Route::put('/medcategories/{id}', [MedicineCategoryController::class, 'update'])->name('medcategories.update');
+Route::delete('/medcategories/{id}', [MedicineCategoryController::class, 'destroy'])->name('medcategories.destroy');
 
 
 
@@ -83,11 +94,20 @@ Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.updat
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 Route::put('/order/{id}/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
 
+// Booking routes (only create and store)
+Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
 
 
+//hospital-category
+
+Route::resource('hospitals', HospitalController::class);
 
 
+Route::resource('labs', LabController::class);
+Route::get('/locations/search', [App\Http\Controllers\LabController::class, 'searchLocations'])->name('locations.search');
 
+Route::resource('lab_tests', LabTestController::class);
 
 //surgeries
 

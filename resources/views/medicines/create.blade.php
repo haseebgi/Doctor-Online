@@ -104,7 +104,13 @@
                 <label class="form-label">Disclaimer</label>
                 <textarea name="disclaimer" class="form-control" rows="2">{{ old('disclaimer') }}</textarea>
             </div>
-
+            <div>
+                <select name="category_id">
+  @foreach($categories as $cat)
+    <option value="{{ $cat->id }}">{{ $cat->company_name }} - {{ $cat->brand_name }}</option>
+  @endforeach
+</select>
+            </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary w-100 mt-3">Save Medicine</button>
             </div>

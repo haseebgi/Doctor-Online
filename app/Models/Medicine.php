@@ -25,7 +25,14 @@ class Medicine extends Model
     'generic_name',
     'formula',
     'drug_class',
-    'medicinal_form'
+    'medicinal_form',
+    'category_id'
+    
 ];
+
+  public function category()
+    {
+        return $this->belongsTo(MedicineCategory::class);
+    }
 
 }

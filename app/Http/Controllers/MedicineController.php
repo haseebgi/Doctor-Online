@@ -4,25 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medicine;
+ use App\Models\MedicineCategory;
 
 class MedicineController extends Controller
 {
-    public function index()
-    {
-        $medicines = Medicine::all();
-        return view('medicines.index', compact('medicines'));
-    }
+  public function index()
+{
+    $medicines = \App\Models\Medicine::with('category')->get(); // eager loading
+    return view('medicines.index', compact('medicines'));
+}
+  public function show($id)
+{
+    $medicine = Medicine::with('category')->findOrFail($id);
+    return view('medicines.show', compact('medicine'));
+}
 
-    public function show($id)
-    {
-        $medicine = Medicine::findOrFail($id);
-        return view('medicines.show', compact('medicine'));
-    }
+   // make sure this is at the top of the file
 
-    public function create()
-    {
-        return view('medicines.create');
-    }
+public function create()
+{
+    $categories = MedicineCategory::all(); // fetch all categories
+    return view('medicines.create', compact('categories')); // pass to view
+}
+
 
     public function store(Request $request)
     {
@@ -46,6 +50,7 @@ class MedicineController extends Controller
             'formula' => 'nullable|string',
             'drug_class' => 'nullable|string',
             'medicinal_form' => 'nullable|string',
+             'category_id' => 'required|exists:medicine_categories,id'
         ]);
 
         $data['prescription_required'] = $request->has('prescription_required');
